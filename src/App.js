@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 // 主應用程式組件
 function App() {
   // DM頁面的圖片URL陣列。請將這些替換為您的實際DM頁面圖片連結。
-  // 注意：如果您的圖片是放在 GitHub 專案中，路徑會是 '/<你的儲存庫名稱>/<圖片路徑>'
   // 根據您提供的圖片路徑，專案名稱假設為 'my-dm-viewer'
   const dmPages = [
     '/my-dm-viewer/ZH/page01.jpg', // DM 頁面 1
@@ -92,7 +91,8 @@ function App() {
       </h1>
 
       {/* DM 顯示區域 */}
-      <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden flex items-center justify-center aspect-[9/16] md:aspect-[3/4]">
+      {/* 調整 max-w 類別以提供更大的顯示空間 */}
+      <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-4xl 2xl:max-w-5xl bg-white rounded-xl shadow-2xl overflow-hidden flex items-center justify-center aspect-[9/16] md:aspect-[3/4]">
         {/* DM 圖片 */}
         <img
           ref={dmImageRef}
@@ -110,57 +110,59 @@ function App() {
         />
 
         {/* 上一頁按鈕 */}
+        {/* 調整按鈕大小和間距 */}
         <button
           onClick={() => handlePageChange('prev')}
-          className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 w-10 h-10 sm:p-4 sm:w-12 sm:h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
           aria-label="上一頁"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
 
         {/* 下一頁按鈕 */}
+        {/* 調整按鈕大小和間距 */}
         <button
           onClick={() => handlePageChange('next')}
-          className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 w-10 h-10 sm:p-4 sm:w-12 sm:h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
           aria-label="下一頁"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
           </svg>
         </button>
       </div>
 
       {/* 控制按鈕和頁碼顯示 */}
-      <div className="flex flex-col sm:flex-row items-center justify-center mt-6 space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+      <div className="flex flex-col sm:flex-row items-center justify-center mt-6 space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-4xl 2xl:max-w-5xl">
         {/* 縮放控制 */}
-        <div className="flex space-x-2 bg-white p-3 rounded-full shadow-lg">
+        <div className="flex space-x-3 bg-white p-4 rounded-full shadow-lg"> {/* 增加空間和內距 */}
           <button
             onClick={handleZoomOut}
-            className="p-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
+            className="p-3 w-10 h-10 sm:p-4 sm:w-12 sm:h-12 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
             aria-label="縮小"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4"></path>
             </svg>
           </button>
-          <span className="text-lg font-semibold text-gray-700 flex items-center justify-center min-w-[40px]">
+          <span className="text-xl font-semibold text-gray-700 flex items-center justify-center min-w-[50px]"> {/* 調整字體大小和最小寬度 */}
             {Math.round(zoomLevel * 100)}%
           </span>
           <button
             onClick={handleZoomIn}
-            className="p-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
+            className="p-3 w-10 h-10 sm:p-4 sm:w-12 sm:h-12 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75"
             aria-label="放大"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
             </svg>
           </button>
         </div>
 
         {/* 頁碼顯示 */}
-        <div className="flex items-center justify-center bg-white p-3 rounded-full shadow-lg text-gray-700 font-semibold text-lg min-w-[120px]">
+        <div className="flex items-center justify-center bg-white p-4 rounded-full shadow-lg text-gray-700 font-semibold text-xl min-w-[140px]"> {/* 調整字體大小和最小寬度 */}
           {`頁面 ${currentPageIndex + 1} / ${dmPages.length}`}
         </div>
       </div>
