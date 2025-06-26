@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/my-dm-viewer/static/css/main.e6c13ad2.css",
+    "main.js": "/my-dm-viewer/static/js/main.c51680b6.js",
+    "static/js/453.d97227b8.chunk.js": "/my-dm-viewer/static/js/453.d97227b8.chunk.js",
+    "index.html": "/my-dm-viewer/index.html",
+    "main.e6c13ad2.css.map": "/my-dm-viewer/static/css/main.e6c13ad2.css.map",
+    "main.c51680b6.js.map": "/my-dm-viewer/static/js/main.c51680b6.js.map",
+    "453.d97227b8.chunk.js.map": "/my-dm-viewer/static/js/453.d97227b8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.c51680b6.js"
+  ]
+}
